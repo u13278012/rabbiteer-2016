@@ -5,32 +5,15 @@
 [![npm dependencies][project-npm-dependencies]][project-npm-dependencies-url]
 [![npm dev dependencies][project-npm-dev-dependencies]][project-npm-dev-dependencies-url]
 
-# node-seed
+# Rabbiteer 2016
 
 This project is a skeleton for a typical NodeJS application.
 
 The idea is to group useful tools and good practices for every application is being developed in node.
 
-## How to use
+This project will grow to contain a whole bunch of things you can work on for the Rabbiteer program :) 
 
-1. Clone this repository: `git clone https://github.com/hwndept/node-seed`
-2. Remove .git directory
-3. Update package.json
-  - set "name"
-  - set "version"(0.0.0 by default)
-  - set "description"
-  - set "author"
-  - set "license"
-  - set right "keywords" or remove this section
-  - set your "repository" or remove this section
-  - set "bugs" or remove this section
-  - set "homepage" or remove this section
-4. Update README.md
-5. Update .travis.yml to use Travis as CI or remove it.
-  **repo_token** used in config is the codeclimate's token.
-  Every build on travis will report code coverage value to codeclimate.
-
-## What are included
+## What is included
 
 - Code linter - [eslint][eslint-url];
 - Test runner - [mocha][mocha-url];
@@ -125,7 +108,7 @@ gulp help
   gulpfile.js             --> list of all gulp tasks
 ```
 
-[project-travis-ci-image]: https://travis-ci.org/hwndept/node-seed.svg?branch=master
+[project-travis-ci-image]: https://travis-ci.org/RetroRabbit/rabbiteer-2016.svg?branch=master
 [project-travis-ci-url]: https://travis-ci.org/hwndept/node-seed
 [project-codeclimate-image]: https://codeclimate.com/github/hwndept/node-seed/badges/gpa.svg
 [project-codeclimate-url]: https://codeclimate.com/github/hwndept/node-seed
