@@ -1,7 +1,7 @@
 {
-  "name": "node-seed",
-  "version": "0.0.14",
-  "description": "A skeleton for a typical NodeJS application",
+  "name": "rabbiteer-2016",
+  "version": "0.0.1",
+  "description": "A skeleton for a NodeJS application",
   "keywords": [
     "node project",
     "nodejs project",
@@ -24,14 +24,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hwndept/node-seed.git"
+    "url": "https://github.com/RetroRabbit/rabbiteer-2016"
   },
-  "author": "Nikolay Shatalov <hwndept@gmail.com>",
+  "author": "Jade Abbott",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hwndept/node-seed/issues"
+    "url": "https://github.com/RetroRabbit/rabbiteer-2016"
   },
-  "homepage": "https://github.com/hwndept/node-seed",
+  "homepage": "https://github.com/RetroRabbit/rabbiteer-2016",
   "devDependencies": {
     "babel": "^5.8.21",
     "gulp": "^3.9.1",
