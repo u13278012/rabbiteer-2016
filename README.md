@@ -13,6 +13,15 @@ The idea is to group useful tools and good practices for every application is be
 
 This project will grow to contain a whole bunch of things you can work on for the Rabbiteer program :) 
 
+## Prerequisites
+1. Node
+
+## Installation
+
+1. Run `npm install gulp -g` which will install gulp globally so you can run it from command.
+2. git clone https://github.com/RetroRabbit/rabbiteer-2016.git
+2. Navigate into folder and run `npm install`
+
 ## What is included
 
 - Code linter - [eslint][eslint-url];
