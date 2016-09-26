@@ -3,18 +3,25 @@ import morgan from 'morgan';
 import {urlencoded, json} from 'body-parser';
 import path from 'path';
 
+/**
+ * @typedef {Object} ServerOptions
+ * @property {string} staticroot - The location of static files. Defaults to "public".
+ */
+
 /** The server object that serves the api and files */
 export class Server {
 
   /** costructs a new server object 
-   * @param {string} staticroot - The location of static files. Defaults to "public" 
+   * @param {ServerOptions} options - Server options 
    */
-  constructor(staticroot) {
+  constructor(options = {}) {
     let app = express();
 
     //set up static file serving
+    let staticroot = options.staticroot;
     if (!staticroot) staticroot = 'public';
     if (!path.isAbsolute(staticroot)) staticroot = path.resolve(staticroot);
+    this._staticroot = staticroot;
     console.log(`static files will be served from ${staticroot}`);
     app.use(express.static(staticroot));
 
@@ -30,8 +37,11 @@ export class Server {
     this.app = app;
   }
 
-  /** Gets the address on which the application may be accessed */
+  /** Gets the address on which the application may be accessed. */
   get url() { return `http://localhost:${this.port}/`; }
+
+  /** Gets the configured static root path. */
+  get staticroot() { return this._staticroot; }
 
   /**
    * Starts listening.
