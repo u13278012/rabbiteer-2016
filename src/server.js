@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
-import {urlencoded,json} from 'body-parser';
-
+import {urlencoded, json} from 'body-parser';
+import path from 'path';
 
 /** The server object that serves the api and files */
 export class Server {
@@ -10,7 +10,9 @@ export class Server {
   constructor() {
     let app = express();
 
-    app.use(express.static(__dirname + '/public'));
+    let staticroot = path.join(process.cwd(), 'public');
+    console.log(`static files will be served from ${staticroot}`);
+    app.use(express.static(staticroot));
 
     // log every request to the console
     app.use(morgan('dev'));
