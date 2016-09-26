@@ -26,6 +26,9 @@ export class Server {
     this.app = app;
   }
 
+  /** Gets the address on which the application may be accessed */
+  get url() { return `http://localhost:${this.port}/`; }
+
   /**
    * Starts listening.
    * @param {string|number} port - The port to listen on. If not given will use `process.env.PORT` or `8080` if not set.
@@ -41,7 +44,10 @@ export class Server {
       try {
         let server = this.app.listen(port);
         server.on('error', reject);
-        server.on('listening', resolve);
+        server.on('listening', () => {
+          this.server = server;
+          resolve();
+        });
       } catch (e) {
         reject(e);
       }
