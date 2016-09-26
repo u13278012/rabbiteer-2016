@@ -2,3 +2,5 @@ node_modules/
 build/
 .codio
 .idea
+
+.nyc_output/

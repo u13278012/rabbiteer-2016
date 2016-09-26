@@ -15,9 +15,32 @@
     "es6",
     "babel"
   ],
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "./build/coverage"
+  },
   "main": "",
   "scripts": {
-    "pre-commit": "./node_modules/.bin/gulp pre-commit"
+    "pre-commit": "npm run build",
+    "compile": "babel src --out-dir build/source --source-maps",
+    "start": "npm run compile && node build/source",
+    "run": "babel-node src",
+    "test": "mocha",
+    "coverage": "nyc mocha",
+    "lint": "eslint src test",
+    "build": "npm run -s lint && nyc check-coverage mocha && npm run compile && npm run docs",
+    "docs": "jsdoc -d build/jsdoc src"
   },
   "pre-commit": [
     "pre-commit"
