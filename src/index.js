@@ -11,7 +11,7 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
 
 rl.question('What is your name? ', name => {
 
-    console.log(hello(name));
+  console.log(hello(name));
 
-    rl.close();
+  rl.close();
 });
