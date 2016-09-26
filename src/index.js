@@ -1,17 +1,16 @@
-/**
- * @module index
- */
 
-import {hello} from './hello';
-import * as readline from 'readline';
+import {Server} from './server';
 
 
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+// create a new instance of our server class
+let server = new Server();
 
-
-rl.question('What is your name? ', name => {
-
-  console.log(hello(name));
-
-  rl.close();
+// start listening
+server.listen().then(() => {
+  console.log(`listening on port ${server.port}`);
+}, e => {
+  console.error(e.message)
+  if(e.code === "EADDRINUSE") {
+    console.log('the port/address is already in use. Is another instance already running?')
+  }
 });
