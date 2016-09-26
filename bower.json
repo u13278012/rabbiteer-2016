@@ -1,0 +1,40 @@
+{
+  "name": "rabbiteer-2016",
+  "description": "A skeleton for a NodeJS application",
+  "main": "",
+  "authors": [
+    "Jade Abbott"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "project",
+    "nodejs",
+    "project",
+    "node",
+    "seed",
+    "eslint",
+    "mocha",
+    "istanbul",
+    "code",
+    "coverage",
+    "gulp",
+    "pre-commit",
+    "es6",
+    "babel"
+  ],
+  "homepage": "https://github.com/RetroRabbit/rabbiteer-2016",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-loading-bar": "^0.9.0"
+  }
+}
