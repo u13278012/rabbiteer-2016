@@ -6,11 +6,15 @@ import path from 'path';
 /** The server object that serves the api and files */
 export class Server {
 
-  /** costructs a new server object */
-  constructor() {
+  /** costructs a new server object 
+   * @param {string} staticroot - The location of static files. Defaults to "public" 
+   */
+  constructor(staticroot) {
     let app = express();
 
-    let staticroot = path.join(process.cwd(), 'public');
+    //set up static file serving
+    if (!staticroot) staticroot = 'public';
+    if (!path.isAbsolute(staticroot)) staticroot = path.resolve(staticroot);
     console.log(`static files will be served from ${staticroot}`);
     app.use(express.static(staticroot));
 
