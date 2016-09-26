@@ -4,7 +4,7 @@ import opn from 'opn';
 
 
 // create a new instance of our server class
-let server = new Server();
+let server = new Server('www');
 
 // start listening
 server.listen().then(() => {
