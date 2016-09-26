@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import {urlencoded,json} from 'body-parser';
 
 
 /** The server object that serves the api and files */
@@ -15,10 +16,10 @@ export class Server {
     app.use(morgan('dev'));
 
     // parse application/x-www-form-urlencoded            
-    //app.use(bodyParser.urlencoded({ 'extended': 'true' }));
+    app.use(urlencoded({ 'extended': 'true' }));
 
     // parse application/json
-    //app.use(bodyParser.json());
+    app.use(json());
 
     this.app = app;
   }
