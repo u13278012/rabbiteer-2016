@@ -7,6 +7,8 @@ var babel = require('gulp-babel');
 var babelRegister = require('babel-core/register');
 var spawn = require('child_process').spawn;
 var path = require('path');
+var webpack = require('gulp-webpack');
+var webpack_conf = require('./webpack.config');
 
 var GULP_FILE = ['gulpfile.js'];
 var SRC_FILES = ['src/**/*.js'];
@@ -14,6 +16,11 @@ var TEST_FILES = ['test/**/*.js'];
 var TEST_CASE_FILES = ['test/**/*.spec.js'];
 var COMPILED_SRC_DIR = 'build/source';
 var JSDOC_DIR = 'build/jsdoc';
+var WWW_JS = 'www/app/**/*.js';
+var WWW_JS_ENTRYPOINT = 'www/app/index.js';
+
+////
+//// Server-side tasks
 
 gulp.task('lint', 'Validates code with "eslint"', function (done) {
   gulp.src(GULP_FILE.concat(SRC_FILES, TEST_FILES))
@@ -66,8 +73,31 @@ gulp.task('build', 'Builds source code: validates it and provides an artifacts',
   sequence('lint', 'coverage', 'compile', 'jsdoc', done);
 });
 
+////
+//// client-side tasks
+
+gulp.task('www-lint', 'Validates clientside code with "eslint"', function (done) {
+  gulp.src(WWW_JS)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+    .on('finish', done);
+});
+
+gulp.task('webpack-js', 'bundles the clientside js files', ['www-lint'], function () {
+  gulp.src(WWW_JS_ENTRYPOINT)
+    .pipe(webpack(webpack_conf))
+    .pipe(gulp.dest('www/'));
+});
+
+gulp.task('www', 'Builds clientside stuffs', ['webpack-js']);
+
+
+
+/// task defaults
+
 gulp.task('pre-commit', 'Being run automatically on a git pre-commit hook', ['build']);
 
-gulp.task('ci', 'Being run on a CI', ['build']);
+gulp.task('ci', 'Being run on a CI', ['build', 'www']);
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build', 'www']);
