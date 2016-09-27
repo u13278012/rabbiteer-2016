@@ -17,6 +17,9 @@ export class Server {
   constructor(options = {}) {
     let app = express();
 
+    // log every request to the console
+    app.use(morgan('dev'));
+
     //set up static file serving
     let staticroot = options.staticroot;
     if (!staticroot) staticroot = 'public';
@@ -24,9 +27,6 @@ export class Server {
     this._staticroot = staticroot;
     console.log(`static files will be served from ${staticroot}`);
     app.use(express.static(staticroot));
-
-    // log every request to the console
-    app.use(morgan('dev'));
 
     // parse application/x-www-form-urlencoded            
     app.use(urlencoded({ 'extended': 'true' }));
