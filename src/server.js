@@ -39,7 +39,7 @@ export class Server {
   }
 
   /** Gets the address on which the application may be accessed. */
-  get url() { return `http://localhost:${this.port}/`; }
+  get url() { return this.port && `http://localhost:${this.port}/`; }
 
   /** Gets the configured static root path. */
   get staticroot() { return this._staticroot; }
@@ -76,6 +76,8 @@ export class Server {
   close() {
     if (this.server && this.server.close) {
       this.server.close();
+      delete this.server;
+      delete this.port;
     }
   }
 }
