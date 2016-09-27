@@ -39,7 +39,7 @@
     "test": "mocha",
     "coverage": "nyc mocha",
     "lint": "eslint src test www/app",
-    "build": "npm run -s lint && nyc check-coverage mocha && npm run compile && npm run docs",
+    "build": "gulp",
     "docs": "jsdoc -d build/jsdoc src",
     "postinstall": "bower install",
     "gulp": "gulp"
