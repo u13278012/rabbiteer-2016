@@ -5,3 +5,5 @@ build/
 
 .nyc_output/
 npm-debug.log
+
+typings/
