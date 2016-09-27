@@ -100,4 +100,4 @@ gulp.task('pre-commit', 'Being run automatically on a git pre-commit hook', ['bu
 
 gulp.task('ci', 'Being run on a CI', ['build', 'www']);
 
-gulp.task('default', ['build', 'www']);
+gulp.task('default', ['compile', 'www']);
