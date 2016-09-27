@@ -47,7 +47,7 @@ export class Server {
   /**
    * @param {int} port - The port on which to listen. Defaults to `process.env.PORT`
    * or port `8080` if not set.
-   * @returns {Promise} returns a promise that will resolve when the server has begun
+   * @returns {Promise<express.Server>} returns a promise that will resolve when the server has begun
    * listening, or reject if something goes wrong. 
    */
   listen(port = undefined) {
@@ -62,11 +62,20 @@ export class Server {
         server.on('error', reject);
         server.on('listening', () => {
           this.server = server;
-          resolve();
+          resolve(server);
         });
       } catch (e) {
         reject(e);
       }
     });
+  }
+
+  /** Stop listening
+   * @return {undefined}
+   */
+  close() {
+    if (this.server && this.server.close) {
+      this.server.close();
+    }
   }
 }
