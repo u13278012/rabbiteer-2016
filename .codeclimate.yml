@@ -8,7 +8,7 @@ engines:
   markdownlint:
     enabled: true
   eslint:
-    enabled: false
+    enabled: true
     config:
       config: .eslintrc
       extensions:
