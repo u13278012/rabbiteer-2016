@@ -10,17 +10,17 @@
     "Promise": true
   },
   "rules": {
-    "no-bitwise": "error",
-    "eqeqeq": "error",
-    "guard-for-in": "error",
-    "no-extend-native": "error",
-    "no-use-before-define": "error",
-    "no-caller": "error",
-    "no-sequences": "error",
-    "no-irregular-whitespace": "error",
-    "no-new": "error",
+    "no-bitwise": 2,
+    "eqeqeq": 2,
+    "guard-for-in": 2,
+    "no-extend-native": 2,
+    "no-use-before-define": 2,
+    "no-caller": 2,
+    "no-sequences": 2,
+    "no-irregular-whitespace": 2,
+    "no-new": 2,
     "require-jsdoc": [
-      "error",
+      2,
       {
         "require": {
           "FunctionDeclaration": true,
@@ -29,20 +29,20 @@
         }
       }
     ],
-    "strict": "error",
-    "no-undef": "error",
-    "no-unused-vars": "error",
+    "strict": 2,
+    "no-undef": 2,
+    "no-unused-vars": 2,
     "indent": [
-      "error",
+      2,
       2,
       {
         "SwitchCase": 1
       }
     ],
     "one-var": [
-      "error",
+      2,
       "never"
     ],
-    "valid-jsdoc": "error"
+    "valid-jsdoc": 2
   }
 }
