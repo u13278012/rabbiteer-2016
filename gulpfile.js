@@ -85,7 +85,7 @@ gulp.task('www-lint', 'Validates clientside code with "eslint"', function (done)
 });
 
 gulp.task('webpack', 'bundles the clientside js files', ['www-lint'], function () {
-  gulp.src(WWW_JS_ENTRYPOINT)
+  return gulp.src(WWW_JS_ENTRYPOINT)
     .pipe(webpack(webpack_conf))
     .pipe(gulp.dest('www/'));
 });
