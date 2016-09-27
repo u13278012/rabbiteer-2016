@@ -42,7 +42,8 @@
     "build": "gulp",
     "docs": "jsdoc -d build/jsdoc src",
     "postinstall": "bower install",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "typings": "typings"
   },
   "pre-commit": [
     "pre-commit"
