@@ -7,7 +7,8 @@ var babel = require('gulp-babel');
 var babelRegister = require('babel-core/register');
 var spawn = require('child_process').spawn;
 var path = require('path');
-var webpack = require('gulp-webpack');
+var gutil = require("gulp-util");
+var webpack = require('webpack');
 var webpack_conf = require('./webpack.config');
 
 var GULP_FILE = ['gulpfile.js'];
@@ -17,7 +18,6 @@ var TEST_CASE_FILES = ['test/**/*.spec.js'];
 var COMPILED_SRC_DIR = 'build/source';
 var JSDOC_DIR = 'build/jsdoc';
 var WWW_JS = 'www/app/**/*.js';
-var WWW_JS_ENTRYPOINT = 'www/app/index.js';
 
 ////
 //// Server-side tasks
@@ -84,10 +84,14 @@ gulp.task('www-lint', 'Validates clientside code with "eslint"', function (done)
     .on('finish', done);
 });
 
-gulp.task('webpack', 'bundles the clientside js files', ['www-lint'], function () {
-  return gulp.src(WWW_JS_ENTRYPOINT)
-    .pipe(webpack(webpack_conf))
-    .pipe(gulp.dest('www/'));
+gulp.task('webpack', 'bundles the clientside js files', ['www-lint'], function (done) {
+  webpack(webpack_conf, function (err, stats) {
+    if (err) throw new gutil.PluginError("webpack", err);
+    gutil.log("[webpack]", stats.toString({
+      // output options
+    }));
+    done();
+  });
 });
 
 gulp.task('www', 'Builds clientside stuffs', ['webpack']);
