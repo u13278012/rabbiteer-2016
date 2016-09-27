@@ -1,7 +1,6 @@
 [![build][project-travis-ci-image]][project-travis-ci-url]
 [![codeclimate][project-codeclimate-image]][project-codeclimate-url]
 [![test coverage][project-codeclimate-coverage-image]][project-codeclimate-coverage-url]
-[![npm version][project-npm-version]][project-npm-version-url]
 [![npm dependencies][project-npm-dependencies]][project-npm-dependencies-url]
 [![npm dev dependencies][project-npm-dev-dependencies]][project-npm-dev-dependencies-url]
 
@@ -118,17 +117,15 @@ gulp help
 ```
 
 [project-travis-ci-image]: https://travis-ci.org/RetroRabbit/rabbiteer-2016.svg?branch=master
-[project-travis-ci-url]: https://travis-ci.org/hwndept/node-seed
-[project-codeclimate-image]: https://codeclimate.com/github/hwndept/node-seed/badges/gpa.svg
-[project-codeclimate-url]: https://codeclimate.com/github/hwndept/node-seed
-[project-codeclimate-coverage-image]: https://codeclimate.com/github/hwndept/node-seed/badges/coverage.svg
-[project-codeclimate-coverage-url]: https://codeclimate.com/github/hwndept/node-seed/coverage
-[project-npm-version]: https://img.shields.io/npm/v/node-seed.svg
-[project-npm-version-url]: https://www.npmjs.com/package/node-seed
-[project-npm-dependencies]: https://david-dm.org/hwndept/node-seed/status.svg
-[project-npm-dependencies-url]: https://david-dm.org/hwndept/node-seed
-[project-npm-dev-dependencies]: https://david-dm.org/hwndept/node-seed/dev-status.svg
-[project-npm-dev-dependencies-url]: https://david-dm.org/hwndept/node-seed#info=devDependencies&view=table
+[project-travis-ci-url]: https://travis-ci.org/RetroRabbit/rabbiteer-2016
+[project-codeclimate-image]: https://codeclimate.com/github/RetroRabbit/rabbiteer-2016/badges/gpa.svg
+[project-codeclimate-url]: https://codeclimate.com/github/RetroRabbit/rabbiteer-2016
+[project-codeclimate-coverage-image]: https://codeclimate.com/github/RetroRabbit/rabbiteer-2016/badges/coverage.svg
+[project-codeclimate-coverage-url]: https://codeclimate.com/github/RetroRabbit/rabbiteer-2016/coverage
+[project-npm-dependencies]: https://david-dm.org/https://david-dm.org/RetroRabbit/rabbiteer-2016/status.svg
+[project-npm-dependencies-url]: https://david-dm.org/RetroRabbit/rabbiteer-2016
+[project-npm-dev-dependencies]: https://david-dm.org/RetroRabbit/rabbiteer-2016/dev-status.svg
+[project-npm-dev-dependencies-url]: https://david-dm.org/https://david-dm.org/RetroRabbit/rabbiteer-2016#info=devDependencies&view=table
 [eslint-url]: http://eslint.org
 [mocha-url]: http://mochajs.org/
 [istanbul-url]: https://github.com/gotwarlost/istanbul/
