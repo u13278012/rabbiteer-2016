@@ -9,22 +9,20 @@
   "tasks": [
     {
       "taskName": "install",
-      "args": [
-        "install"
-      ]
+            "args": ["install"]
     },
     {
       "taskName": "update",
-      "args": [
-        "update"
-      ]
+            "args": ["update"]
+        },
+        {
+            "taskName": "test",
+            "args": ["run", "test"],
+            "isTestCommand": true
     },
     {
-      "taskName": "compile",
-      "args": [
-        "run",
-        "compile"
-      ],
+            "taskName": "build",
+            "args": ["run", "build"],
       "isBuildCommand": true
     }
   ]
