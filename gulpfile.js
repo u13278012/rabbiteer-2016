@@ -10,6 +10,7 @@ var path = require('path');
 var gutil = require("gulp-util");
 var webpack = require('webpack');
 var webpack_conf = require('./webpack.config');
+var sourcemaps = require('gulp-sourcemaps');
 
 var GULP_FILE = ['gulpfile.js'];
 var SRC_FILES = ['src/**/*.js'];
@@ -57,7 +58,9 @@ gulp.task('coverage', 'Runs tests and generates code coverage report', function 
 
 gulp.task('compile', 'Compiles source code from es6 to es5', function (done) {
   gulp.src(SRC_FILES)
+    .pipe(sourcemaps.init())
     .pipe(babel())
+    .pipe(sourcemaps.write('.', { includeContent: false, sourceRoot: '../../src' }))
     .pipe(gulp.dest(COMPILED_SRC_DIR))
     .on('finish', done);
 });
