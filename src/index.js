@@ -10,7 +10,7 @@ let server = new Server({
 
 // start listening
 server.listen().then(() => {
-  console.log(`listening on port ${server.port}`);
+  console.log(`listening really hard on port ${server.port}`);
   if (process.env.NODE_ENV !== 'production') {
     opn(server.url);
   }
