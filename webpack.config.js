@@ -8,8 +8,8 @@ const uglify = new webpack.optimize.UglifyJsPlugin({
 })
 
 const config = {
-  context: path.join(__dirname, "www/app"),
-  entry: "./index",
+  context: path.join(__dirname, "www"),
+  entry: "./app/index",
   output: {
     path: path.join(__dirname, "www"),
     publicPath: '/',
@@ -19,6 +19,11 @@ const config = {
   plugins: [
     uglify
   ],
+  module: {
+    loaders: [
+      { test: /\.scss$/, loaders: ["style", "css", "sass?config=otherSassLoaderConfig"] }
+    ]
+  },
   resolve: {
     modulesDirectories: ['lib'],
     alias: {

@@ -9,10 +9,6 @@ var spawn = require('child_process').spawn;
 var path = require('path');
 var webpack = require('gulp-webpack');
 var webpack_conf = require('./webpack.config');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var cleanCSS = require('gulp-clean-css');
-var concat = require('gulp-concat');
 
 var GULP_FILE = ['gulpfile.js'];
 var SRC_FILES = ['src/**/*.js'];
@@ -22,7 +18,6 @@ var COMPILED_SRC_DIR = 'build/source';
 var JSDOC_DIR = 'build/jsdoc';
 var WWW_JS = 'www/app/**/*.js';
 var WWW_JS_ENTRYPOINT = 'www/app/index.js';
-var WWW_SCSS_MAIN = 'www/styles/main.scss';
 
 ////
 //// Server-side tasks
@@ -89,23 +84,13 @@ gulp.task('www-lint', 'Validates clientside code with "eslint"', function (done)
     .on('finish', done);
 });
 
-gulp.task('scss', 'compiles sass stylesheet', function () {
-  return gulp.src(WWW_SCSS_MAIN)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCSS())
-    .pipe(concat('bundle.css'))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('www'));
-});
-
-gulp.task('webpack-js', 'bundles the clientside js files', ['www-lint'], function () {
+gulp.task('webpack', 'bundles the clientside js files', ['www-lint'], function () {
   gulp.src(WWW_JS_ENTRYPOINT)
     .pipe(webpack(webpack_conf))
     .pipe(gulp.dest('www/'));
 });
 
-gulp.task('www', 'Builds clientside stuffs', ['webpack-js', 'scss']);
+gulp.task('www', 'Builds clientside stuffs', ['webpack']);
 
 
 
