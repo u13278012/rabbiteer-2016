@@ -1,0 +1,48 @@
+{
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  },
+  "globals": {
+    "Promise": true
+  },
+  "rules": {
+    "no-bitwise": "error",
+    "eqeqeq": "error",
+    "guard-for-in": "error",
+    "no-extend-native": "error",
+    "no-use-before-define": "error",
+    "no-caller": "error",
+    "no-sequences": "error",
+    "no-irregular-whitespace": "error",
+    "no-new": "error",
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true
+        }
+      }
+    ],
+    "strict": "error",
+    "no-undef": "error",
+    "no-unused-vars": "error",
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "one-var": [
+      "error",
+      "never"
+    ],
+    "valid-jsdoc": "error"
+  }
+}

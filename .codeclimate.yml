@@ -10,11 +10,9 @@ engines:
   eslint:
     enabled: false
     config:
-      config: .eslintrc.yml
+      config: .eslintrc
       extensions:
-      - .es6
       - .js
-      - .jsx
   nodesecurity:
     enabled: true
   fixme:
