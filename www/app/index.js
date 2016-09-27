@@ -4,3 +4,4 @@ const angularLoadingBar = require('angular-loading-bar');
 const angularUiRouter = require('angular-ui-router');
 
 angular.module('app', [angularLoadingBar, angularUiRouter]);
+
