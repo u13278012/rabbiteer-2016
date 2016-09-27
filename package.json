@@ -41,7 +41,7 @@
     "lint": "eslint src test www/app",
     "build": "gulp",
     "docs": "jsdoc -d build/jsdoc src",
-    "postinstall": "bower install & typings install & pushd www & typings install & popd",
+    "postinstall": "bower install & typings install & cd www & typings install & cd ..",
     "gulp": "gulp"
   },
   "pre-commit": [
