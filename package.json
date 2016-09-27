@@ -34,7 +34,7 @@
   "scripts": {
     "pre-commit": "npm run build",
     "compile": "babel src --out-dir build/source --source-maps",
-    "start": "npm run compile && node build/source",
+    "start": "npm run build && node build/source",
     "run": "babel-node src",
     "test": "mocha",
     "coverage": "nyc mocha",
