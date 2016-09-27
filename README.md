@@ -5,7 +5,7 @@
 [![npm dependencies][project-npm-dependencies]][project-npm-dependencies-url]
 [![npm dev dependencies][project-npm-dev-dependencies]][project-npm-dev-dependencies-url]
 
-# Rabbiteer 2016
+# Rabbiteer 2016 !!
 
 This project is a skeleton for a typical NodeJS application.
 
