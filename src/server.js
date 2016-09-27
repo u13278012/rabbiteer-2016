@@ -43,6 +43,12 @@ export class Server {
   /** Gets the configured static root path. */
   get staticroot() { return this._staticroot; }
 
+  /**
+   * @param {int} port - The port on which to listen. Defaults to `process.env.PORT`
+   * or port `8080` if not set.
+   * @returns {Promise} returns a promise that will resolve when the server has begun
+   * listening, or reject if something goes wrong. 
+   */
   listen(port = undefined) {
     // port is optional
     if (!port) port = parseInt(this.port || process.env.PORT || 8080);
@@ -62,9 +68,4 @@ export class Server {
       }
     });
   }
-  /**
-   * Starts listening.
-   * @param {string|number} port - The port to listen on. If not given will use `process.env.PORT` or `8080` if not set.
-   * @return {promise} A promise that will resolve one listening has started, or rejected if listening fails.
-   */
 }
