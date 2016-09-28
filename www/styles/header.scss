@@ -1,0 +1,39 @@
+@import './vars.scss';
+
+
+  header {
+    display:block;
+
+    & > nav {
+      margin:0 auto;
+      max-width: $max-width;
+      display:flex;
+      align-items: stretch;
+
+      h1 {
+        margin:0;
+        padding:0;
+        font-size:1rem;
+        width: 100px;
+
+        a, a:active, a:hover {
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+
+      ul {
+        margin:0;
+        padding:0;
+        flex-grow: 1;
+        display:flex;
+        align-items: stretch;
+      }
+    }
+  }
+
+
+@media screen and (max-width: $break-width) {
+
+
+}
