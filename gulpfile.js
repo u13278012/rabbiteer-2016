@@ -11,6 +11,12 @@ var gutil = require("gulp-util");
 var webpack = require('webpack');
 var webpack_conf = require('./webpack.config');
 var sourcemaps = require('gulp-sourcemaps');
+var watchify = require('watchify');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var assign = require('lodash.assign');
+var sass = require('gulp-sass');
 
 var GULP_FILE = ['gulpfile.js'];
 var SRC_FILES = ['src/**/*.js'];
@@ -18,7 +24,17 @@ var TEST_FILES = ['test/**/*.js'];
 var TEST_CASE_FILES = ['test/**/*.spec.js'];
 var COMPILED_SRC_DIR = 'build/source';
 var JSDOC_DIR = 'build/jsdoc';
+var WWW = "www/";
 var WWW_JS = 'www/app/**/*.js';
+var WWW_JS_ENTRYPOINT = 'www/app/index.js';
+var SASS_SRC = ['www/styles/**/*.scss'];
+var SASS_ENTRYPOINT = 'www/styles/main.scss';
+
+
+const browserifyOptions = {
+  entries: [WWW_JS_ENTRYPOINT],
+  debug: true
+};
 
 ////
 //// Server-side tasks
@@ -79,6 +95,20 @@ gulp.task('build', 'Builds source code: validates it and provides an artifacts',
 ////
 //// client-side tasks
 
+let bundlejs = (browserified) => {
+  return browserified.bundle()
+    // log errors if they happen
+    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .pipe(source('bundle.js'))
+    // optional, remove if you don't need to buffer file contents
+    .pipe(buffer())
+    // optional, remove if you dont want sourcemaps
+    .pipe(sourcemaps.init({ loadMaps: true })) // loads map from browserify file
+    // Add transformation tasks to the pipeline here.
+    .pipe(sourcemaps.write('.')) // writes .map file
+    .pipe(gulp.dest(WWW));
+}
+
 gulp.task('www-lint', 'Validates clientside code with "eslint"', function (done) {
   gulp.src(WWW_JS)
     .pipe(eslint())
@@ -87,21 +117,39 @@ gulp.task('www-lint', 'Validates clientside code with "eslint"', function (done)
     .on('finish', done);
 });
 
-gulp.task('webpack', 'bundles the clientside js files', ['www-lint'], function (done) {
-  webpack(webpack_conf, function (err, stats) {
-    if (err) throw new gutil.PluginError("webpack", err);
-    gutil.log("[webpack]", stats.toString({
-      // output options
-    }));
-    done();
-  });
+gulp.task('browserify', 'bundles the clientside js files', function () {
+  return bundlejs(browserify(browserifyOptions));
 });
 
-gulp.task('www', 'Builds clientside stuffs', ['webpack']);
+gulp.task('sass', 'bundles the clientside js files', function () {
+  return gulp.src(SASS_ENTRYPOINT)
+    .pipe(sourcemaps.init())
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(WWW));
+});
+
+gulp.task('www', 'Builds clientside stuffs', ['browserify', 'www-lint', 'sass']);
 
 
+/// clientside watches
+
+gulp.task('watchify', 'bundles the clientside js files', function () {
+  let b = watchify(browserify(browserifyOptions));
+
+  b.on('update', () => bundlejs(b)); // on any dep update, runs the bundler
+  b.on('log', gutil.log); // output build logs to terminal
+
+  return bundlejs(b);
+});
+
+gulp.task('watch-sass', 'watches for scss changes', function() {
+  gulp.watch(SASS_SRC, ['sass']);
+});
 
 /// task defaults
+
+gulp.task('watch', 'watches clientside js and scss', ['watch-sass', 'watchify']);
 
 gulp.task('pre-commit', 'Being run automatically on a git pre-commit hook', ['build']);
 
