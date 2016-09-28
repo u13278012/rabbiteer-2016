@@ -7,7 +7,7 @@ let devtool = null;
 
 if (development) {
   plugins = [];
-  devtool = "cheap-module-eval-source-map";
+  devtool = "cheap-module-source-map";
 } else {
   const uglify = new webpack.optimize.UglifyJsPlugin({
     compress: {
@@ -31,7 +31,8 @@ const config = {
   plugins: plugins,
   module: {
     loaders: [
-      { test: /\.scss$/, loaders: ["style", "css", "sass?config=otherSassLoaderConfig"] }
+      { test: /\.scss$/, loaders: ["style", "css", "sass?config=otherSassLoaderConfig"] },
+      { test: /\.html$/, loaders: ["file"] }
     ]
   },
   resolve: {
