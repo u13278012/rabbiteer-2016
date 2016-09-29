@@ -3,16 +3,19 @@ import {Server} from './server';
 import opn from 'opn';
 
 
+const development = process.env.NODE_ENV !== 'production';
+
 // create a new instance of our server class
 let server = new Server({
-  staticroot: "www"
+  staticroot: "www",
+  livereload: development
 });
 
 // start listening
 server.listen().then(() => {
   let message = `listening really hard on port ${server.port}`;
   console.log(message);
-  if (process.env.NODE_ENV !== 'production') {
+  if (development) {
     opn(server.url);
   }
 

@@ -20,6 +20,14 @@ export class Server {
     // log every request to the console
     app.use(morgan('dev'));
 
+    //live reload in dev env
+    if (options.livereload) {
+      try {
+        app.use(require('connect-livereload')({ port: 35729 }));
+        console.info('live reload connected');
+      } catch (e) { console.warn('could not connect live reload', e); }
+    }
+
     //set up static file serving
     let staticroot = options.staticroot;
     if (!staticroot) staticroot = 'public';
@@ -27,7 +35,6 @@ export class Server {
     this._staticroot = staticroot;
     console.log(`static files will be served from ${staticroot}`);
     app.use(express.static(staticroot));
-
 
     // parse application/x-www-form-urlencoded
     app.use(urlencoded({ 'extended': 'true' }));

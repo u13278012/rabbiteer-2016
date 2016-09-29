@@ -17,6 +17,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var assign = require('lodash.assign');
 var sass = require('gulp-sass');
+var tinylr = require('tiny-lr')();
 
 var GULP_FILE = ['gulpfile.js'];
 var SRC_FILES = ['src/**/*.js'];
@@ -95,6 +96,16 @@ gulp.task('build', 'Builds source code: validates it and provides an artifacts',
 ////
 //// client-side tasks
 
+let notifyLiveReload = (event) => {
+  var fileName = require('path').relative(__dirname, event.path);
+
+  tinylr.changed({
+    body: {
+      files: [fileName]
+    }
+  });
+}
+
 let bundlejs = (browserified) => {
   return browserified.bundle()
     // log errors if they happen
@@ -131,7 +142,6 @@ gulp.task('sass', 'bundles the clientside js files', function () {
 
 gulp.task('www', 'Builds clientside stuffs', ['browserify', 'www-lint', 'sass']);
 
-
 /// clientside watches
 
 gulp.task('watchify', 'bundles the clientside js files', function () {
@@ -143,13 +153,19 @@ gulp.task('watchify', 'bundles the clientside js files', function () {
   return bundlejs(b);
 });
 
-gulp.task('watch-sass', 'watches for scss changes', function() {
+gulp.task('watch-sass', 'watches for scss changes', function () {
   gulp.watch(SASS_SRC, ['sass']);
+});
+
+gulp.task('livereload', function () {
+  tinylr.listen(35729);
+  
+  gulp.watch(['www/**/*.html', 'www/main.css'], notifyLiveReload);
 });
 
 /// task defaults
 
-gulp.task('watch', 'watches clientside js and scss', ['watch-sass', 'watchify']);
+gulp.task('watch', 'watches clientside js and scss', ['watch-sass', 'watchify', 'livereload']);
 
 gulp.task('pre-commit', 'Being run automatically on a git pre-commit hook', ['build']);
 
