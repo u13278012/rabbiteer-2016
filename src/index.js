@@ -1,14 +1,18 @@
 
 import {Server} from './server';
 import opn from 'opn';
+import {startDebugSupport} from './debugsupport';
 
 
 const development = process.env.NODE_ENV !== 'production';
 
+if(development) {
+  startDebugSupport();
+}
+
 // create a new instance of our server class
 let server = new Server({
-  staticroot: "www",
-  livereload: development
+  staticroot: "www"
 });
 
 // start listening
