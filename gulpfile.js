@@ -8,14 +8,11 @@ var babelRegister = require('babel-core/register');
 var spawn = require('child_process').spawn;
 var path = require('path');
 var gutil = require("gulp-util");
-var webpack = require('webpack');
-var webpack_conf = require('./webpack.config');
 var sourcemaps = require('gulp-sourcemaps');
 var watchify = require('watchify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var assign = require('lodash.assign');
 var sass = require('gulp-sass');
 var tinylr = require('tiny-lr')();
 
