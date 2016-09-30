@@ -6,18 +6,17 @@
 
 # Rabbiteer 2016
 
-This project is a skeleton for a typical NodeJS application.
+This project <strike>is</strike> was a skeleton for a typical NodeJS application. Now it's been expanded
+to be an Express hosted Angular single page application.
 
-The idea is to group useful tools and good practices for every application is being developed in node.
-
-This project will grow to contain a whole bunch of things you can work on for the Rabbiteer program :) 
+This project contains a whole bunch of things you can work on for the Rabbiteer program :) 
 
 ## Prerequisites
 1. Node
 
 ## Installation
 
-1. git clone https://github.com/RetroRabbit/rabbiteer-2016.git
+1. git clone [https://github.com/RetroRabbit/rabbiteer-2016.git](https://github.com/RetroRabbit/rabbiteer-2016.git)
 2. Navigate into folder and run `npm install`
 3. Start the site by running `npm start`
 
