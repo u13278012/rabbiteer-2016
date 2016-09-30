@@ -18,7 +18,7 @@ This project contains a whole bunch of things you can work on for the Rabbiteer 
 
 1. git clone [https://github.com/RetroRabbit/rabbiteer-2016.git](https://github.com/RetroRabbit/rabbiteer-2016.git)
 2. Navigate into folder and run `npm install`
-3. Start the site by running `npm start`
+3. Start the site by running `npm start` (Or just press <kbd>F5</kbd> in VS Code).
 
 ## What is included
 
