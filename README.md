@@ -127,5 +127,5 @@ npm run
 [express-url]: https://expressjs.com/
 [angular-url]:https://angularjs.org/
 [sass-url]: http://sass-lang.com/
-[livereload-url]: http://livereload.com/
+[liverload-url]: http://livereload.com/
 [typings-url]: https://github.com/typings/typings
