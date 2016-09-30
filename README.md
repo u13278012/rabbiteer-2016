@@ -109,7 +109,7 @@ npm run
 [project-codeclimate-url]: https://codeclimate.com/github/RetroRabbit/rabbiteer-2016
 [project-codeclimate-coverage-image]: https://codeclimate.com/github/RetroRabbit/rabbiteer-2016/badges/coverage.svg
 [project-codeclimate-coverage-url]: https://codeclimate.com/github/RetroRabbit/rabbiteer-2016/coverage
-[project-npm-dependencies]: https://david-dm.org/https://david-dm.org/RetroRabbit/rabbiteer-2016/status.svg
+[project-npm-dependencies]: https://david-dm.org/RetroRabbit/rabbiteer-2016/status.svg
 [project-npm-dependencies-url]: https://david-dm.org/RetroRabbit/rabbiteer-2016
 [project-npm-dev-dependencies]: https://david-dm.org/RetroRabbit/rabbiteer-2016/dev-status.svg
 [project-npm-dev-dependencies-url]: https://david-dm.org/https://david-dm.org/RetroRabbit/rabbiteer-2016#info=devDependencies&view=table
