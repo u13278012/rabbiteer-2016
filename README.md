@@ -17,50 +17,56 @@ This project will grow to contain a whole bunch of things you can work on for th
 
 ## Installation
 
-1. Run `npm install gulp -g` which will install gulp globally so you can run it from command.
-2. git clone https://github.com/RetroRabbit/rabbiteer-2016.git
+1. git clone https://github.com/RetroRabbit/rabbiteer-2016.git
 2. Navigate into folder and run `npm install`
+3. Start the site by running `npm start`
 
 ## What is included
 
-- Code linter - [eslint][eslint-url];
-- Test runner - [mocha][mocha-url];
-- Test coverage checker - [istanbul][istanbul-url];
-- Task manager - [gulp][gulp-url];
-- Pre-commit hook;
-- JsDoc generation - [jsdoc][jsdoc-url];
-- ES6 Support([ECMA-262, Edition 5][ecma-262-edition-5-url]) - [babel][babel-url];
-- Codeclimate integration [codeclimate][codeclimate-url];
-- TravisCI integration [travis-ci][travis-ci-url];
-- Editor Config [editorconfig][editor-config-url];
-- List all available tasks using `gulp help` command;
+- Code linter - [eslint][eslint-url]
+- Test runner - [mocha][mocha-url]
+- Test coverage checker - [istanbul][istanbul-url]
+- Task manager - [gulp][gulp-url]
+- <strike>Pre-commit hook</strike>
+- JsDoc generation - [jsdoc][jsdoc-url]
+- ES6 Support([ECMA-262, Edition 5][ecma-262-edition-5-url]) - [babel][babel-url]
+- Codeclimate integration [codeclimate][codeclimate-url]
+- TravisCI integration [travis-ci][travis-ci-url]
+- Editor Config [editorconfig][editor-config-url]
+- List all available tasks using <strike>`gulp help`</strike> `npm run` command
+- **Javascript intellisense using [Typings][typings-url]**
+- **[Express][express-url] hosting [Angular][angular-url] single page application**
+- **[Sass][sass-url] Stylesheets downcompiling to css**
+- **Clientside javascript using [Browserify][browserify-url]**
+- **Dev support including watches for css and js, and [LiveReload][liverload-url] for rapid dev**
 
 ## Linting
 
 ```bash
-gulp lint
+npm run lint
 ```
 
 Code that will be validated:
 
 - all **\*.js** files in **src** folder
 - all **\*.js** files in **test** folder
+- all **\*.js** files in **www** folder
 - **gulpfile.js**
 
 ## Running tests and generating code coverage report
 
 ```bash
-gulp test
+npm run coverage
 ```
 
-Test cases stored in files **test/\*\*/\*.test.js** will be run only
+Test cases stored in files **test/\*\*/\*.spec.js** will be run only
 
 Coverage reports will be generated and stored in folder **build/coverage**
 
 ## Generating jsdoc
 
 ```bash
-gulp jsdoc
+npm run jsdoc
 ```
 
 Documentation will be generated for **\*.js** files from **src** folder and stored in folder **build/jsdoc**
@@ -70,7 +76,7 @@ Documentation will be generated for **\*.js** files from **src** folder and stor
 Since **nodejs** doesn't fully support all ES6 features source code should be compiled.
 
 ```bash
-gulp compile
+npm run build
 ```
 
 Source code in **src** folder will be compiled and stored in folder **build/source**
@@ -83,37 +89,18 @@ gulp
 gulp build
 ```
 
-## Pre-commit hook
+## <strike>Pre-commit hook</strike>
 
-This hook is invoked by **git commit**, and can be bypassed with **--no-verify** option.
+<strike>
+This hook is invoked by git commit, and can be bypassed with --no-verify option.
 
-The task **gulp build** will be run automatically.
+The task gulp build will be run automatically.
+</strike>
 
 ## Printing all available tasks and theirs arguments
 
 ```bash
-gulp help
-```
-
-## Directory Layout
-
-```
-  build/                  --> build results
-    coverage              --> code coverage reports
-    jsdoc                 --> documentation generated for source code
-  src/                    --> source files for the application
-    hello.js              --> added just for an example
-  test/                   --> test files for the application
-    .eslintrc             --> configuration file for eslint; these rules
-                              will be applied for files in this folder
-                              only; created because test cases contain
-                              global functions which exports by
-                              mocha(describe, it, beforeEach, etc)
-    hello.test.js         --> added just for an example
-  .editorconfig           --> configuration file for code editors to keep style
-  .eslintrc               --> configuration file for eslint
-  .travis.yml             --> configuration file for travis-ci
-  gulpfile.js             --> list of all gulp tasks
+npm run
 ```
 
 [project-travis-ci-image]: https://travis-ci.org/RetroRabbit/rabbiteer-2016.svg?branch=master
@@ -136,3 +123,9 @@ gulp help
 [codeclimate-url]: https://codeclimate.com/
 [travis-ci-url]: https://travis-ci.org/
 [editor-config-url]: http://editorconfig.org/
+[browserify-url]: http://browserify.org/
+[express-url]: https://expressjs.com/
+[angular-url]:https://angularjs.org/
+[sass-url]: http://sass-lang.com/
+[livereload-url]: http://livereload.com/
+[typings-url]: https://github.com/typings/typings
