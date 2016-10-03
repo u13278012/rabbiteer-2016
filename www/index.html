@@ -17,14 +17,17 @@
     <nav>
       <h1><a href="/">Rabbiteer</a></h1>
       <ul>
-        <li><a href="/page1">page1</a></li>
-        <li><a href="/page2">page2</a></li>
+        <li><a ui-sref="Page1">page1</a></li>
+        <li><a ui-sref="Page2">page2</a></li>
         <li><a href="/page3">page3</a></li>
+        <li><a href="/page4">page4</a></li>
       </ul>
     </nav>
   </header>
 
-  Welcome!
+  <div id="content">
+    <ui-view></ui-view>
+  </div>
 
   <script>document.write(`<script src="http://${location.hostname}:35729/livereload.js?snipver=1"></${"script>"}`)</script>
 </body>
