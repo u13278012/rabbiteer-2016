@@ -12,9 +12,9 @@
 
       h1 {
         margin:0;
-        padding:0;
-        font-size:1rem;
-        width: 100px;
+        padding:5px;
+        font-size:2rem;
+        width: 200px;
 
         a, a:active, a:hover {
           text-decoration: none;
@@ -28,6 +28,18 @@
         flex-grow: 1;
         display:flex;
         align-items: stretch;
+        list-style: none;
+        align-items: flex-end;
+
+        li {
+          padding:3px 10px;
+          
+          a {
+            text-decoration: none;
+            color:black;
+            font-weight: bold;
+          }
+        }
       }
     }
   }

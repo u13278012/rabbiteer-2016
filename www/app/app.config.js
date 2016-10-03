@@ -21,5 +21,17 @@ module.exports = function ($stateProvider, $urlRouterProvider, $locationProvider
     controller: require('./page2.controller')
   });
 
+  $stateProvider.state('Page3', {
+    url: '/page3',
+    templateUrl: 'templates/page3.html',
+    controller: require('./page3.controller')
+  });
+
+  $stateProvider.state('Page4', {
+    url: '/page4',
+    templateUrl: 'templates/page4.html',
+    controller: require('./page4.controller')
+  });
+
   $urlRouterProvider.when('', '/');
 }
