@@ -1507,6 +1507,11 @@
       "from": "express@>=4.14.0 <5.0.0",
       "resolved": "https://registry.npmjs.org/express/-/express-4.14.0.tgz"
     },
+    "express-spa-router": {
+      "version": "0.0.8",
+      "from": "express-spa-router@latest",
+      "resolved": "https://registry.npmjs.org/express-spa-router/-/express-spa-router-0.0.8.tgz"
+    },
     "extend": {
       "version": "3.0.0",
       "from": "extend@>=3.0.0 <3.1.0",
@@ -2986,7 +2991,7 @@
     },
     "node-sass": {
       "version": "3.10.0",
-      "from": "node-sass@>=3.4.2 <4.0.0",
+      "from": "node-sass@latest",
       "resolved": "https://registry.npmjs.org/node-sass/-/node-sass-3.10.0.tgz",
       "dependencies": {
         "gaze": {

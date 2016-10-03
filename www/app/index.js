@@ -6,5 +6,8 @@ const angularUiRouter = require('angular-ui-router');
 //initialize our angular module
 const app = angular.module('app', [angularLoadingBar, angularUiRouter]);
 
+//configuration (incl routing)
+app.config(require('./app.config'));
+
 //our main app controller
 app.controller('AppController', require('./app.controller'));

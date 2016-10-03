@@ -94,6 +94,7 @@
     "babel-core": "^6.16.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "express-spa-router": "0.0.8",
     "morgan": "^1.7.0",
     "opn": "^4.0.2"
   }
