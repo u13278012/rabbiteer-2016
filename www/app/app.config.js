@@ -1,6 +1,7 @@
 module.exports = function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-  $locationProvider.html5Mode(true);
+  //$locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(false);
 
   $stateProvider.state('Home', {
     url: '/',
@@ -19,4 +20,6 @@ module.exports = function ($stateProvider, $urlRouterProvider, $locationProvider
     templateUrl: 'templates/page2.html',
     controller: require('./page2.controller')
   });
+
+  $urlRouterProvider.when('', '/');
 }
