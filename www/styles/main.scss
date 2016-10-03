@@ -3,11 +3,12 @@
 
 @import './vars.scss';
 @import './header.scss';
-
+@import './added.scss';
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding:0;
     margin:0;
+    background-color: #212121;
 }
 
 a {
@@ -17,3 +18,4 @@ a {
 [ng-cloak] {
     display:none !important;
 }
+
