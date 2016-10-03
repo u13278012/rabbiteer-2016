@@ -56,9 +56,8 @@
     -moz-transition: all 0.5s ease 0s;
     -ms-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s;
-}
 
-    .header-area.navbar-fixed-top {
+    &.navbar-fixed-top {
         position: fixed;
         padding: 10px 0;
         background: rgba(0,0,0,0.9);
@@ -67,6 +66,8 @@
         -ms-transition: all 0.5s ease 0s;
         transition: all 0.5s ease 0s;
     }
+}
+
 
 /* Logo Area */
 
@@ -75,17 +76,14 @@
     margin: 0 0 0 0;
     float: left;
     text-align: left;
-    font-family: OpenSansRegular;
     position: relative;
-}
 
-    .logo-area a.logo {
+    a.logo {
         padding-right: 10px;
         display: inline-table;
         text-decoration: none;
     }
-
-    .logo-area span.phone {
+    span.phone {
         padding-left: 20px;
         display: inline-table;
         color: #FFFFFF;
@@ -94,6 +92,9 @@
         font-size: 20px;
         border-left: 1px solid rgba(251,251,251,0.5);
     }
+}
+
+
 
 .toggle-btn, .toggle-btn:hover, .toggle-btn:focus {
     padding: 0 0 0 0;
@@ -115,36 +116,75 @@
     margin: 0 0 0 0;
     float: right;
     text-align: right;
-    font-family: OpenSansLight;
-}
-
-    .nav-main .menu-cont {
+    
+    .menu-cont {
         padding: 0 0 0 0;
         margin: 0 0 0 0;
         list-style: none;
         font-size: 16px;
-        font-family: OpenSansRegular;
         text-transform: uppercase;
-    }
 
-        .nav-main .menu-cont li {
+        li {
             padding: 0 15px;
             margin: 0 0 0 0;
             display: inline-table;
             position: relative;
-        }
 
-            .nav-main .menu-cont li a {
+            a:hover, &.active a, &:hover a {
+                color: #ABFF4F;
+                text-decoration: none;
+            }
+
+            &:hover ul.sub-menu {
+                display: block;
+            }
+
+             a {
                 color: #ffffff;
                 text-decoration: none;
                 display: block;
                 border-bottom: 3px solid rgba(53,143,162,0);
             }
 
-                .nav-main .menu-cont li a:hover, .nav-main .menu-cont li.active a, .nav-main .menu-cont li:hover a {
-                    color: #ABFF4F;
-                    text-decoration: none;
+            ul.sub-menu {
+                padding: 0 0 0 0;
+                margin: 0 0 0 0;
+                list-style: none;
+                position: absolute;
+                display: none;
+
+                li {
+                    padding: 0 0 0 0;
+                    margin: 0 0 0 0;
+                    display: block;
+                    text-align: center;
+
+                    a {
+                        padding: 5px 10px;
+                        margin: 0 0 1px 0;
+                        border: 0;
+                        background: rgba(53,143,162,0.8);
+                        white-space: nowrap;
+                        font-size: 14px;
+
+                        text-transform: none;
+                        min-width: 130px;
+                        color: #ffffff;
+                    }
+
+
+                    a:hover, &.active a {
+                        background: rgba(53,143,162,0.4);
+                        color: #ffffff;
+                    }
                 }
+            }
+        }
+
+    }
+}
+
+
 
 a.nav-order-btn, a.nav-order-btn:hover {
     padding: 3px 10px;
@@ -159,42 +199,8 @@ a.nav-order-btn, a.nav-order-btn:hover {
     border: 0 !important;
 }
 
-.nav-main .menu-cont li ul.sub-menu {
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    list-style: none;
-    position: absolute;
-    display: none;
-}
 
-.nav-main .menu-cont li:hover ul.sub-menu {
-    display: block;
-}
 
-.nav-main .menu-cont li ul.sub-menu li {
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    display: block;
-    text-align: center;
-}
-
-    .nav-main .menu-cont li ul.sub-menu li a {
-        padding: 5px 10px;
-        margin: 0 0 1px 0;
-        border: 0;
-        background: rgba(53,143,162,0.8);
-        white-space: nowrap;
-        font-size: 14px;
-
-        text-transform: none;
-        min-width: 130px;
-        color: #ffffff;
-    }
-
-        .nav-main .menu-cont li ul.sub-menu li a:hover, .nav-main .menu-cont li ul.sub-menu li.active a {
-            background: rgba(53,143,162,0.4);
-            color: #ffffff;
-        }
 
 /* ==================================================== */
 /* 04. Banner Content Styles                            */
@@ -416,7 +422,6 @@ a.nav-order-btn, a.nav-order-btn:hover {
 }
 
     .footer-area a {
-        font-family: OpenSansBold;
         color: #a0a0a0;
         text-decoration: none;
     }
@@ -437,7 +442,6 @@ a.nav-order-btn, a.nav-order-btn:hover {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     list-style-type: none;
-    font-family: OpenSansLight;
 
     font-size: 14px;
     text-transform: uppercase;
@@ -452,7 +456,6 @@ a.nav-order-btn, a.nav-order-btn:hover {
         .footer-nav ul li:before {
             padding: 0 10px 0 0;
             margin: 0 0 0 0;
-            font-family: OpenSansLight;
             content: "";
             color: #62646c;
             font-size: 14px;
@@ -479,21 +482,18 @@ a.nav-order-btn, a.nav-order-btn:hover {
         .footer-address ul li.email:before {
             padding: 0 14px 0 0;
             margin: 0 0 0 0;
-            font-family: OpenSansLight;
             font-size: 14px;
         }
 
         .footer-address ul li.phone:before {
             padding: 0 14px 0 0;
             margin: 0 0 0 0;
-            font-family: OpenSansLight;
             font-size: 14px;
         }
 
         .footer-address ul li.address:before {
             padding: 0 14px 0 0;
             margin: 0 0 0 0;
-            font-family: OpenSansLight;
             font-size: 14px;
             display: block;
             float: left;
@@ -539,5 +539,4 @@ a.nav-order-btn, a.nav-order-btn:hover {
 
 .footer-bottom p {
     font-size: 14px;
-    font-family: OpenSansRegular;
 }
