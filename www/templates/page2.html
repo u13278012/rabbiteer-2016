@@ -1,3 +1,15 @@
-<span ng-repeat="clock in clocks">
-  {{date | date : clock.format}} <br/>
-</span>
+<div class="clocks">
+  <h1 class="basicHeader">Clocks</h1>
+  <div class="clocksContainer">
+    <span ng-repeat="clock in clocks">
+      <div class="clockTools">
+        <div class="clock">{{date | date : clock.format : clock.timezone.offset}}</div>
+        <div class="button"><input type="button" value="Edit"/></div>
+        <div class="button"><input type="button" value="Delete"/></div>
+      </div>
+    </span>
+    <div class="clockTools">
+      <div class="button"><input type="button" value="Add"/></div>
+    </div>
+  </div>
+</div>
