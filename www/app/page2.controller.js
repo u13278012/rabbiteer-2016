@@ -42,8 +42,8 @@ module.exports = function ($scope, $interval) {
     }, {
       format: formats.time,
       timezone: {
-      offset: "-0700",
-      text: "(UTC-08:00) Baja California"
+        offset: "-0700",
+        text: "(UTC-08:00) Baja California"
       }
     }
   ];
