@@ -10,8 +10,8 @@ $spacing:        5px;
 $player-1-icon:  "\f00d";
 $player-2-icon:  "\f10c";
 
-$player-1-color: #F67B91;
-$player-2-color: #A48FF7;
+$player-1-color: #ffccff;
+$player-2-color: #999966;
 $hover-color:    #3d4250;
 
 /* Body and Notice styling
@@ -131,7 +131,6 @@ h5 {
   // Label style
   label {
     background-color: #abff4f;
-    border-radius: 14px;
     cursor: pointer;
     color: #fff;
     display: none;
