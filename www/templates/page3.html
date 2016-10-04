@@ -1,32 +1,30 @@
-<h1 class="basicHeader">To Do List
-  </h1>
-<!doctype html>
-<html>
-  <head>
-  </head>
-  <body>
+<h1 class="basicHeader">To Do List</h1>
+  
+
     <div style="margin:1%">
 
-    <div>
+    <div class="toDoDiv">
+      <div class="toDoList">
       <span>{{todoList.remaining()}} of {{todoList.length}} remaining</span>
-       <a href="" ng-click="todoList.archive()">archive</a> ]
-      <ul class="unstyled">
+       <a href="" class="rabbitButton" ng-click="todoList.archive()">Archive</a> 
+      
+      <ul class="unstyled list">
         <li ng-repeat="todo in todoList">
           <label class="checkbox">
             <input type="checkbox" ng-model="todo.done">
             <span class="done-{{todo.done}}">{{todo.text}}</span>
           </label>
+          <hr>
         </li>
       </ul>
+      
       <form ng-submit="todoList.addTodo()">
-        <input type="text" ng-model="todoList.todoText"  size="30"
+        <input type="text" class="rabbitTextBox" ng-model="todoList.todoText"  size="34"
                placeholder="add new todo here">
-        <input class="btn-primary" type="submit" value="add">
+        <input id="addToDo"  type="submit" value="+">
       </form>
     </div>
-    <div>
-  </body>
-</html>
+</div>
 
 <style>
   .done-true {
