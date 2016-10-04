@@ -24,6 +24,7 @@ module.exports = function ($scope, $interval) {
       timezone: JSON.parse($scope.selectedTimeZone)
     };
     $scope.clocks.push(newClock);
+    $scope.selectedTimeZone = "";
   };
 
   $scope.clocks = [
