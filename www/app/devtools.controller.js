@@ -11,9 +11,7 @@ module.exports = function ($scope) {
 
     var a = 1;
     console.log(a);
-
     a = a + 1;
-
     console.log(a);
   }
 }
