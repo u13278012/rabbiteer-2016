@@ -53,7 +53,7 @@ module.exports = function ($scope, $interval) {
   }
 
   var initClock = function () {
-    $interval(tick, 2000);
+    $interval(tick, 1000);
   };
 
   function init() {
