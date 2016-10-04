@@ -33,6 +33,8 @@
     "tests"
   ],
   "dependencies": {
-    "flexboxgrid": "^6.3.2"
+    "flexboxgrid": "^6.3.2",
+    "compass-sass-mixins": "*",
+    "components-font-awesome": "^4.6.3"
   }
 }

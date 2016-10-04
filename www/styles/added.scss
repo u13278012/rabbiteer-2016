@@ -33,6 +33,7 @@
 }
 
 .calculator{
+    display: inline-flex;
     text-align: center;
     margin-top: 34px;
     min-height: 400px;
@@ -53,7 +54,7 @@
 }
 
 #calcTable{
-  border: 2px  solid #abff4f;
+  border:  solid 2px  #abff4f;
   border-radius: 7px;
   padding: 10px;
 }
