@@ -6,21 +6,30 @@
 </head>
 <body>
 
-  <p>asdkjsakjhkjhskjkjasdhkj</p>
+  <p>My random paragraph</p>
+  {{inputList}}
   <form>
     <div>
-      <input type="button" class="example1" value="Submit" ng-click="example2()">
+      <input type="text" ng-model="inputText"/>
+      <input type="button" class="example1" value="Submit" ng-click="example2()"/>
     </div>
   </form>
 </body>
 </html>
 
 <style>
-  .example1 {
+.example1 {
   color: red;
 }
-  .example1_2 {
+.example1_2 {
   color: grey;
-    padding-left: 50px;
+  padding-left: 50px;
+}
+.example1_3{
+    background: transparent;
+    color: aqua;
+    border: none;
+    margin-left: -6px;
+    outline: none;
 }
   </style>
