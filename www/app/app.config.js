@@ -1,7 +1,7 @@
 module.exports = function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
   //$locationProvider.html5Mode(true);
-  $locationProvider.html5Mode(false);
+  $locationProvider.html5Mode((false));
 
   $stateProvider.state('Home', {
     url: '/',
