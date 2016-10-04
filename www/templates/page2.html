@@ -9,13 +9,14 @@
         <div class="button"><input type="button" value="Delete" ng-click="deleteClock(clock)"/></div>
       </div>
     </span>
-    <div class="clockTools">
-      <div>
+    <div class="clockTools custom" >
+      <div >
         <select ng-model="selectedTimeZone">
           <option ng-repeat="tz in timezones" value="{{tz}}">{{tz.text}}</option>
         </select>
       </div>
       <div class="button"><input type="button" value="Add" ng-click="addClock()"/></div>
+      
     </div>
   </div>
 </div>
