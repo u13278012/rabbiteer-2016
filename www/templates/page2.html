@@ -5,11 +5,17 @@
       <div class="clockTools">
         <div class="clock">{{date | date : clock.format : clock.timezone.offset}}</div>
         <div class="button"><input type="button" value="Edit"/></div>
-        <div class="button"><input type="button" value="Delete"/></div>
+        <div class="button"><input type="button" value="Delete" ng-click="deleteClock(clock)"/></div>
       </div>
     </span>
     <div class="clockTools">
-      <div class="button"><input type="button" value="Add"/></div>
+      <div>
+        <select ng-model="selectedTimeZone">
+          <option ng-repeat="tz in timezones" value="{{tz}}">{{tz.text}}</option>
+        </select>
+      </div>
+      <div class="button"><input type="button" value="Add" ng-click="addClock()"/></div>
     </div>
   </div>
+  {{selectedTimeZone.text}}
 </div>

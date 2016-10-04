@@ -1,10 +1,26 @@
 module.exports = function ($scope, $interval) {
 
   $scope.date = Date.now();
+  $scope.selectedTimeZone = {};
 
   //formats
   var formats = [];
   formats.time = 'HH:mm:ss a';
+
+  $scope.deleteClock = function(clock){
+    //filters out the deleted clock
+    $scope.clocks = $scope.clocks.filter(function(c){
+      return c.format === clock.format && c.timezone.offset === clock.timezone.offset
+    })
+  };
+
+  $scope.addClock = function(){
+    console.log($scope.selectedTimeZone);
+    $scope.clocks.push({
+      format: formats.time,
+      timezone: $scope.selectedTimeZone
+    });
+  };
 
   $scope.clocks = [
     {
@@ -22,8 +38,8 @@ module.exports = function ($scope, $interval) {
     }, {
       format: formats.time,
       timezone: {
-        offset: "-0200",
-        text: "(UTC+02:00) NOT Harare, Pretoria"
+      offset: "-0700",
+      text: "(UTC-08:00) Baja California"
       }
     }
   ];
