@@ -37,6 +37,11 @@
 .list input{
 float: right;
 }
+
+li{
+    list-style-type: none;
+}
+
 .toDoDiv{
     text-align: center;
 }
