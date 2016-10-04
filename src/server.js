@@ -51,8 +51,8 @@ export class Server {
    */
   listen(port = undefined) {
     // port is optional
-    if (!port) port = parseInt(this.port || process.env.PORT || 8000);
-    this.port = 8000;
+    if (!port) port = parseInt(this.port || process.env.PORT || 8080);
+    this.port = port;
 
     //return a promise that resolves or rejects based on the ability to listen
     return new Promise((resolve, reject) => {
