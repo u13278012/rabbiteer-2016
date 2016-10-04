@@ -3,6 +3,7 @@
   <div class="clocksContainer">
     <span ng-repeat="clock in clocks">
       <div class="clockTools">
+        <div class="clock">{{clock.timezone.text}}</div>
         <div class="clock">{{date | date : clock.format : clock.timezone.offset}}</div>
         <div class="button"><input type="button" value="Edit"/></div>
         <div class="button"><input type="button" value="Delete" ng-click="deleteClock(clock)"/></div>
