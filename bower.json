@@ -34,6 +34,7 @@
   ],
   "dependencies": {
     "flexboxgrid": "^6.3.2",
-    "compass-sass-mixins": "*"
+    "compass-sass-mixins": "*",
+    "components-font-awesome": "^4.6.3"
   }
 }
