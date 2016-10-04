@@ -20,7 +20,7 @@
     "no-irregular-whitespace": 2,
     "no-new": 2,
     "require-jsdoc": [
-      2,
+      0,
       {
         "require": {
           "FunctionDeclaration": true,
