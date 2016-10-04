@@ -6,15 +6,15 @@ module.exports = function ($scope, $interval) {
   //formats
   var formats = [];
   formats.normal = 'yyyy/MM/dd HH:mm:ss a';
-  formats.date = 'yyyy/mm/dd';
-  formats.time = 'hh:mm:ss a';
+  formats.date = 'yyyy/MM/dd';
+  formats.time = 'HH:mm:ss a';
 
   function tick() {
     $scope.date = Date.now();
   }
 
   var initClock = function () {
-    $interval(tick, 2200);
+    $interval(tick, 1000);
   };
 
   $scope.clocks = [
