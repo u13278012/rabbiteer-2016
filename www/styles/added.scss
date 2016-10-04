@@ -37,6 +37,11 @@
 .list input{
 float: right;
 }
+
+li{
+    list-style-type: none;
+}
+
 .toDoDiv{
     text-align: center;
 }
@@ -72,7 +77,20 @@ float: right;
 }
 .clockTools {
     display: flex;
+    
 }
+
+.custom
+{
+    position:relative; 
+    left: 4.9%;
+
+
+}
+
+
+
+
 .button {
     width: 50px;
     height: 40px;
