@@ -1,9 +1,10 @@
 var firebase = require("firebase");
 
 module.exports = function ($scope) {
+  $scope.nick = "hobp"
+  $scope.location = window.location.hostname 
   $scope.messages = [];
   $scope.newMessage = {};
-  $scope.nick = "Anonymous";
 
   var config = {
     apiKey: "AIzaSyBnRqWBvsbR-5bnvaRAZZbJc_DQK2JzxHo",
@@ -25,15 +26,14 @@ module.exports = function ($scope) {
       });
     }
   });
-  
-  var location = window.location
 
-  var ref = '/chat_rooms/' + location.hostname + '/messages'
+  var ref = '/chat_rooms/' + $scope.location+ '/messages'
   var messagesdbRef = firebase.database().ref(ref);
 
   messagesdbRef.on('child_added', function (data) {
     let message = data.val()
     $scope.messages.push({
+      current: $scope.nick == message.nick ? true : false,
       nick: message.nick,
       message: message.message
     });
@@ -53,8 +53,9 @@ module.exports = function ($scope) {
   };
 
   $scope.sendMessage = function (newMessage) {
+    debugger
     firebase.database().ref(ref + '/' + $scope.RandomCode()).set({
-      nick: newMessage.nick,
+      nick: $scope.nick,
       message: newMessage.message
     });
   }
