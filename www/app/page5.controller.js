@@ -53,10 +53,10 @@ module.exports = function ($scope) {
   };
 
   $scope.sendMessage = function (newMessage) {
-    debugger
     firebase.database().ref(ref + '/' + $scope.RandomCode()).set({
       nick: $scope.nick,
       message: newMessage.message
     });
+    $scope.newMessage.message = "" 
   }
 }
