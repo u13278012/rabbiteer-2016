@@ -1,20 +1,20 @@
 var firebase = require("firebase");
 
 module.exports = function ($scope) {
-  $scope.messages = [ 
+  $scope.messages = [
     { id: "33198", nick: 'hobp', message: "true" },
     { id: "33198", nick: 'hobp', message: "asdddddd" }
-    ];
+  ];
   $scope.newMessage = {};
   $scope.nick = "Anonymous";
 
   $scope.sendMessage = function (newMessage) {
 
-     firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
+    /*firebase.database().ref('users/' + userId).set({
+      username: name,
+      email: email,
+      profile_picture: imageUrl
+    });*/
     $scope.messages.push({
       nick: newMessage.nick,
       message: newMessage.message
@@ -46,9 +46,9 @@ module.exports = function ($scope) {
   // Get a reference to the Firebase Realtime Database
   //var chatRef = firebase.database().ref();
 
- var location = $location.host()
+  var location = window.location
 
-  var messagesRef = firebase.database().ref('/chat_rooms/' + location + '/messages');
+  var messagesRef = firebase.database().ref('/chat_rooms/' + location.host + '/messages');
 
   messagesRef.on('child_added', function (data) {
     let message = data.val()
@@ -62,13 +62,13 @@ module.exports = function ($scope) {
   });
 
   $scope.RandomCode = function () {
-         var today = new Date();
-         var dd = ("00" + today.getDate()).substr(-2, 2);
-         var mm = ("00" + (today.getMonth() + 1)).substr(-2, 2);
-         var hh = ("00" + (today.getHours() + 1)).substr(-2, 2);
-         var mm = ("00" + (today.getMinutes() + 1)).substr(-2, 2);
-         var ss = ("00" + (today.getSeconds() + 1)).substr(-2, 2);
-         var ran = Math.ceil((Math.random() * 999999)) + ""
-         return "" + mm + dd + hh + mm + ss + ran;
-     };
+    var today = new Date();
+    var dd = ("00" + today.getDate()).substr(-2, 2);
+    var mm = ("00" + (today.getMonth() + 1)).substr(-2, 2);
+    var hh = ("00" + (today.getHours() + 1)).substr(-2, 2);
+    var mm = ("00" + (today.getMinutes() + 1)).substr(-2, 2);
+    var ss = ("00" + (today.getSeconds() + 1)).substr(-2, 2);
+    var ran = Math.ceil((Math.random() * 999999)) + ""
+    return "" + mm + dd + hh + mm + ss + ran;
+  };
 }
