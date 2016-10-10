@@ -6,7 +6,7 @@
   <table class="table">
     <tr ng-repeat="msg in messages">
       <td>
-        <div  class=" bubble" ng-class="{true: 'bubble', false: 'bubble bubble--alt'}[msg.current]" <P
+        <div  class=" bubble" ng-class="{true: 'bubble bubble--alt', false: 'bubble'}[msg.current]" <P
           style="color: black">
           <b>{{msg.nick}}</b><br> {{msg.message}}
           </P>
