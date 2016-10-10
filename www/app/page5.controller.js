@@ -1,26 +1,9 @@
 var firebase = require("firebase");
 
 module.exports = function ($scope) {
-  $scope.messages = [
-    { id: "33198", nick: 'hobp', message: "true" },
-    { id: "33198", nick: 'hobp', message: "asdddddd" }
-  ];
+  $scope.messages = [];
   $scope.newMessage = {};
   $scope.nick = "Anonymous";
-
-  $scope.sendMessage = function (newMessage) {
-
-    /*firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture: imageUrl
-    });*/
-    $scope.messages.push({
-      nick: newMessage.nick,
-      message: newMessage.message
-    });
-    $scope.newMessage.message = '';
-  }
 
   var config = {
     apiKey: "AIzaSyBnRqWBvsbR-5bnvaRAZZbJc_DQK2JzxHo",
@@ -42,17 +25,14 @@ module.exports = function ($scope) {
       });
     }
   });
-
-  // Get a reference to the Firebase Realtime Database
-  //var chatRef = firebase.database().ref();
-
+  
   var location = window.location
 
-  var messagesRef = firebase.database().ref('/chat_rooms/' + location.host + '/messages');
+  var ref = '/chat_rooms/' + location.hostname + '/messages'
+  var messagesdbRef = firebase.database().ref(ref);
 
-  messagesRef.on('child_added', function (data) {
+  messagesdbRef.on('child_added', function (data) {
     let message = data.val()
-    console.log(message)
     $scope.messages.push({
       nick: message.nick,
       message: message.message
@@ -71,4 +51,11 @@ module.exports = function ($scope) {
     var ran = Math.ceil((Math.random() * 999999)) + ""
     return "" + mm + dd + hh + mm + ss + ran;
   };
+
+  $scope.sendMessage = function (newMessage) {
+    firebase.database().ref(ref + '/' + $scope.RandomCode()).set({
+      nick: newMessage.nick,
+      message: newMessage.message
+    });
+  }
 }

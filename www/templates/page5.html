@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="../lib/components-font-awesome/css/font-awesome.min.css"/>
 
 <h1 class="basicHeader">Chat</h1>
+<div class="toDoDiv">
+  <div class="toDoList">
     <div id="chat">
       <table class="table">
         <tr ng-repeat="msg in messages">
@@ -8,10 +10,10 @@
           <td colspan="2">{{msg.message}}</td>
         </tr>
         <tr>
-            <td><input ng-model="newMessage.nick" placeholder="Nick" /></td>
-            <td><input ng-model="newMessage.message" class="span6" placeholder="Message text" /></td>
-            <td><button ng-click="sendMessage(newMessage)">Send</button></td>
+          <td><input ng-model="newMessage.message" class="span6" placeholder="Message text" /></td>
+          <td><button ng-click="sendMessage(newMessage)">Send</button></td>
         </tr>
       </table>
     </div>
-
+  </div>
+</div>
