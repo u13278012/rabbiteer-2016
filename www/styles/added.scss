@@ -649,7 +649,6 @@ input[type=text].textbox  {
     color: white;
     width: 200px;
     height: 20px;
-    padding-right: 50px;
 }
 
 input[type=text].textbox:focus{
@@ -715,12 +714,12 @@ button.textbox:focus {
   /* .bubble */
   
   .bubble {
-    background-image: linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
-    background-image: -o-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
-    background-image: -moz-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
-    background-image: -webkit-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
-    background-image: -ms-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
-    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.25, rgb(210, 244, 254)), color-stop(1, rgb(149, 194, 253)));
+    background-image: linear-gradient(bottom, rgb(241,241,241) 25%, rgb(171,171,171) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(241,241,241) 25%, rgb(171,171,171) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(241,241,241) 25%, rgb(171,171,171) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(241,241,241) 25%, rgb(171,171,171) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(241,241,241) 25%, rgb(171,171,171) 100%);
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.25, rgb(241,241,241)), color-stop(1, rgb(171,171,171)));
     border: solid 1px rgba(0, 0, 0, 0.5);
     /* vendor rules */
     border-radius: 20px;
@@ -757,7 +756,7 @@ button.textbox:focus {
   
   .bubble:after {
     border: 8px solid transparent;
-    border-bottom-color: #d2f4fe;
+    border-bottom-color: rgb(241,241,241);
     bottom: 1px;
     left: -5px;
   }
