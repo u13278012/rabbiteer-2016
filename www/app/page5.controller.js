@@ -5,8 +5,8 @@ module.exports = function ($scope) {
   //Create Prototype to generate hash code from string
   String.prototype.hashCode = function () {
     var hash = 0;
-    for (i = 0; i < this.length; i++) {
-      char = this.charCodeAt(i);
+    for (var i = 0; i < this.length; i++) {
+      var char = this.charCodeAt(i);
       hash = char + (hash << 6) + (hash << 16) - hash;
     }
     return hash;
