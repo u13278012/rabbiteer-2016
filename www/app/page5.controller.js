@@ -2,8 +2,16 @@ const firebase = require("firebase");
 
 module.exports = function ($scope) {
 
-  $scope.nick = "Anon"
-  $scope.location = window.location.hostname
+  $scope.nick = "Anon";
+  $scope.location = document.domain.substr(0, document.domain.indexOf('.'));
+  $scope.currentroom = document.domain.substr(0, document.domain.indexOf('.'));
+
+  //For localhost testing
+  if ($scope.location.length == 0 || $scope.location == undefined || $scope.location == null) {
+    $scope.location = window.location.href.substr(0, window.location.href.indexOf('#'));
+    $scope.currentroom = document.domain;
+  }
+  $scope.rooms = [];
   $scope.messages = [];
   $scope.newMessage = {};
   var config = {
@@ -14,7 +22,6 @@ module.exports = function ($scope) {
   };
 
   var providerGitHub = new firebase.auth.GithubAuthProvider();
-  var providerGoogle = new firebase.auth.GoogleAuthProvider();
 
   if (firebase.apps.length == 0)
     firebase.initializeApp(config);
@@ -37,8 +44,18 @@ module.exports = function ($scope) {
     // ...
   });
 
-  var ref = '/chat_rooms/' + $scope.location + '/messages'
-  var messagesdbRef = firebase.database().ref(ref);
+  var messagesdbRef = firebase.database().ref('/chat_rooms/' + $scope.location + '/messages');
+  var roomsRef = firebase.database().ref('/chat_rooms/');
+
+  roomsRef.on('child_added', function (data) {
+    let room = data.val()
+
+    $scope.rooms.push({
+      name: data.key,
+      url: room.url
+    });
+    $scope.$apply();
+  });
 
   messagesdbRef.on('child_added', function (data) {
     let message = data.val()
@@ -63,14 +80,44 @@ module.exports = function ($scope) {
         $scope.nick = user.email;
       $scope.user = user;
       $scope.$apply();
+
+
+      firebase.database().ref('/chat_rooms/' + $scope.location).setPriority({
+        url: $scope.location
+      }, function (e) {
+        if (e != null)
+          alert(e.message);
+      });
     }
   });
+
+  $scope.sendMessage = function (newMessage) {
+    firebase.database().ref('/chat_rooms/' + $scope.location + '/messages/' + $scope.RandomCode()).set({
+      userid: $scope.user.uid,
+      nick: $scope.nick,
+      message: newMessage.message
+    }, function (e) {
+      if (e != null)
+        alert(e.message);
+    });
+    $scope.newMessage.message = "";
+  }
+
+  $scope.sendMessageOnEnter = function (event, newMessage) {
+    if (event.key === "Enter") {
+      $scope.sendMessage(newMessage);
+    }
+  }
 
   $scope.signInWithGitHub = function () {
     // Sign them in with GitHub
     firebase.auth().signInWithRedirect(providerGitHub);
   }
-  
+
+  $scope.changeChatRoom = function (room) {
+    window.location.href = room.url;
+  }
+
   $scope.RandomCode = function () {
     var today = new Date();
     var dd = ("00" + today.getDate()).substr(-2, 2);
@@ -110,21 +157,4 @@ module.exports = function ($scope) {
     }
   }
 
-  $scope.sendMessage = function (newMessage) {
-    firebase.database().ref(ref + '/' + $scope.RandomCode()).set({
-      userid: $scope.user.uid,
-      nick: $scope.nick,
-      message: newMessage.message
-    }, function (e) {
-      if (e != null)
-        alert(e.message);
-    });
-    $scope.newMessage.message = "";
-  }
-
-  $scope.sendMessageOnEnter = function (event, newMessage) {
-    if (event.key === "Enter") {
-      $scope.sendMessage(newMessage);
-    }
-  }
 }

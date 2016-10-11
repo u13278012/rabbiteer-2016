@@ -1,11 +1,25 @@
 <link rel="stylesheet" href="../lib/components-font-awesome/css/font-awesome.min.css" />
 
-<h1 class="basicHeader">Chat Room: {{location}}</h1>
-
-<div ng-if="!isLoggedIn()"> 
-    <a class="btn btn-block btn-social btn-github" ng-click="signInWithGitHub()">
-      <span class="fa fa-github"></span> Sign in with GitHub
-    </a> 
+<form name="chatrooms">
+  <div class="styled-select">
+    <table>
+      <tr>
+        <td>
+          <label for="repeatSelect"><h1 class="basicHeader">Chat Room:</h1></label>
+        </td>
+        <td>
+          <select name="repeatSelect" id="repeatSelect" ng-model="currentroom" ng-change="changeChatRoom(currentroom)" ng-options="option.name for option in rooms track by option.name">
+           <option> <span>{{room.name}}</span> </option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+<div ng-if="!isLoggedIn()">
+  <a class="btn btn-block btn-social btn-github" ng-click="signInWithGitHub()">
+    <span class="fa fa-github"></span> Sign in with GitHub
+  </a>
 </div>
 <div class="chat-container" ng-if="isLoggedIn()">
   <table class="table">
@@ -18,11 +32,12 @@
       </td>
     </tr>
     <tr>
-      <td><input type="text" ng-model="newMessage.message" ng-keydown="sendMessageOnEnter($event,newMessage)" class="span6 send" placeholder="Type message..."/></td>
+      <td><input type="text" ng-model="newMessage.message" ng-keydown="sendMessageOnEnter($event,newMessage)" class="span6 textbox"
+          placeholder="Type message..." /></td>
       <td><button ng-click="sendMessage(newMessage)" class="send"><i class="fa fa-paper-plane"></i></button></td>
     </tr>
     <tr>
-      <td><input type="text" class="displayname" placeholder="Change Displayname" ng-model="nick" ng-keydown="changeDisplayNameOnEnter($event,nick)" ></td>
+      <td><input type="text" class="textbox" placeholder="Change Displayname" ng-model="nick" ng-keydown="changeDisplayNameOnEnter($event,nick)"></td>
       <td><button class="fa fa-pencil displayname" ng-click="changeDisplayName(nick)" /></td>
     </tr>
     <tr>

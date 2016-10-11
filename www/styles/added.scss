@@ -642,7 +642,7 @@ a.nav-order-btn, a.nav-order-btn:hover {
     font-size: 14px;
 }
 
-input[type=text].send, input[type=text].displayname  { 
+input[type=text].textbox  { 
     background: transparent;
     border: none;
     border-bottom: 2px solid #abff4f;
@@ -652,17 +652,7 @@ input[type=text].send, input[type=text].displayname  {
     padding-right: 50px;
 }
 
-input[type=submit].send, button[type=submit].displayname {
-    margin-left: -50px;
-    height: 25px;
-    width: 50px;
-    background: #abff4f;
-    color: white;
-    border: 0;
-    -webkit-appearance: none;
-}
-
-input[type=text].send:focus, button[type=text].diplayname:focus {
+input[type=text].textbox:focus{
     outline-color: #abff4f;
     border-color: #abff4f;
     outline: 0;
@@ -670,14 +660,14 @@ input[type=text].send:focus, button[type=text].diplayname:focus {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(171, 255, 79, 0.6);
 }
 
-button.send, button.displayname { 
+button.textbox { 
     height: 22px;
     width: 24px;
     border: none;
     border-radius: 0px;
 }
 
-button.send:focus, button.displayname:focus {
+button.textbox:focus {
     outline: #abff4f auto 5px;
     outline-color: #abff4f;
     outline-style: auto;
@@ -686,6 +676,34 @@ button.send:focus, button.displayname:focus {
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(171, 255, 79, 0.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(171, 255, 79, 0.6);
 }
+
+.styled-select select {
+   background: rgba(0,0,0,.075);
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   color:white;
+    outline-color: #abff4f;
+    border-color: #abff4f;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(171, 255, 79, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(171, 255, 79, 0.6);
+   }
+
+.styled-select select option span {
+    color:white;
+    background: #abff4f;
+   }
+
+.styled-select select option {
+    color:black;
+    background: white;
+   }
 
   /* Bit of normalisation */
   
