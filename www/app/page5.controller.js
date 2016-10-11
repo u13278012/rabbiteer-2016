@@ -57,7 +57,10 @@ module.exports = function ($scope) {
 
     if (user) {
       // If the user is logged in, set the nickname and store the Firebase User for later use 
-      $scope.nick = user.displayName;
+      if (user.displayName != undefined && user.displayName != null)
+        $scope.nick = user.displayName;
+      else
+        $scope.nick = user.email;
       $scope.user = user;
       $scope.$apply();
     }
@@ -67,12 +70,7 @@ module.exports = function ($scope) {
     // Sign them in with GitHub
     firebase.auth().signInWithRedirect(providerGitHub);
   }
-
-  $scope.signInWithGoogle = function () {
-    // Sign them in with GitHub
-    firebase.auth().signInWithRedirect(providerGoogle);
-  }
-
+  
   $scope.RandomCode = function () {
     var today = new Date();
     var dd = ("00" + today.getDate()).substr(-2, 2);
@@ -123,7 +121,7 @@ module.exports = function ($scope) {
     });
     $scope.newMessage.message = "";
   }
-  
+
   $scope.sendMessageOnEnter = function (event, newMessage) {
     if (event.key === "Enter") {
       $scope.sendMessage(newMessage);

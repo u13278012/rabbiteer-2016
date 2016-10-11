@@ -2,17 +2,10 @@
 
 <h1 class="basicHeader">Chat Room: {{location}}</h1>
 
-<div ng-if="!isLoggedIn()">
-  <div>
+<div ng-if="!isLoggedIn()"> 
     <a class="btn btn-block btn-social btn-github" ng-click="signInWithGitHub()">
       <span class="fa fa-github"></span> Sign in with GitHub
-    </a>
-  </div>
-  <div>
-    <a class="btn btn-social btn-google" ng-click="signInWithGoogle()">
-      <span class="fa fa-google"></span> Sign in with Google
-    </a>
-  </div>
+    </a> 
 </div>
 <div class="chat-container" ng-if="isLoggedIn()">
   <table class="table">
@@ -29,7 +22,7 @@
       <td><button ng-click="sendMessage(newMessage)" class="send"><i class="fa fa-paper-plane"></i></button></td>
     </tr>
     <tr>
-      <td><input type="text" class="displayname" placeholder="Change Displayname" ng-model="nick" ng-keydown="changeDisplayName($event,nick)" ></td>
+      <td><input type="text" class="displayname" placeholder="Change Displayname" ng-model="nick" ng-keydown="changeDisplayNameOnEnter($event,nick)" ></td>
       <td><button class="fa fa-pencil displayname" ng-click="changeDisplayName(nick)" /></td>
     </tr>
     <tr>
