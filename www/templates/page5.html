@@ -2,14 +2,14 @@
 
 <form name="chatrooms">
   <div class="styled-select">
-    <table>
+    <table ng-if="isLoggedIn()">
       <tr>
         <td>
           <label for="repeatSelect"><h1 class="basicHeader">Chat Room:</h1></label>
         </td>
         <td>
-          <select name="repeatSelect" id="repeatSelect" ng-model="currentroom" ng-change="changeChatRoom(currentroom)" ng-options="option.name for option in rooms track by option.name">
-           <option> <span>{{room.name}}</span> </option>
+          <select name="repeatSelect" id="repeatSelect" ng-model="currentroom" ng-change="changeChatRoom(currentroom)" ng-options="option.url as option.url for option in rooms track by option.url">
+             <option style="display:none" value="">Select another chat room</option>
           </select>
         </td>
       </tr>
