@@ -12,18 +12,18 @@ module.exports = function ($scope) {
     return hash;
   }
 
+  $scope.currentroom = document.domain;
   $scope.nick = "Anon";
-  //$scope.currentroom = document.domain;
   $scope.rooms = [];
   $scope.messages = [];
   $scope.newMessage = {};
 
   //For localhost testing
   if (document.domain == 'localhost') {
-    $scope.currentroom = 'localhost:8080';
+    $scope.currentroom = $scope.currentroom + ':8080';
     $scope.rooms.push({
-      url: 'localhost:8080',
-      key:$scope.currentroom.hashCode()
+      url: $scope.currentroom,
+      key: $scope.currentroom.hashCode()
     });
   }
   //Firebase Config used to connect to your firebase app (cant download this under Firebase Project Settings)
@@ -94,7 +94,7 @@ module.exports = function ($scope) {
       message: message.message
     });
     $scope.$apply();
-  
+
   });
 
   //Saves a message to the current rooms message list on Firebase
