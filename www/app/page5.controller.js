@@ -18,14 +18,17 @@ module.exports = function ($scope) {
   $scope.messages = [];
   $scope.newMessage = {};
 
-  //For localhost testing
+  //For localhost testing to add the port
   if (document.domain == 'localhost') {
     $scope.currentroom = $scope.currentroom + ':8080';
-    $scope.rooms.push({
-      url: $scope.currentroom,
-      key: $scope.currentroom.hashCode()
-    });
   }
+
+  //Push the current domain to $scope.rooms so that the ng-model on ng-select selects the current room 
+  $scope.rooms.push({
+    url: $scope.currentroom,
+    key: $scope.currentroom.hashCode()
+  });
+
   //Firebase Config used to connect to your firebase app (cant download this under Firebase Project Settings)
   var config = {
     apiKey: "AIzaSyBnRqWBvsbR-5bnvaRAZZbJc_DQK2JzxHo",
