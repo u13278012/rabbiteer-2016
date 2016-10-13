@@ -38,7 +38,7 @@ module.exports = function ($scope) {
   };
 
   //Provider used to log into firebase (Can enable multipe providers under the Firebase Auth Section)
-  var providerGitHub = new firebase.auth.GithubAuthProvider();
+  //var providerGitHub = new firebase.auth.GithubAuthProvider();
 
   //Check if App is initialized if not initialize 
   if (firebase.apps.length == 0)
@@ -72,9 +72,7 @@ module.exports = function ($scope) {
         url: $scope.currentroom
       });
 
-
-
-      //Listener for rooms
+      //Add Listener for rooms when user has been authenticated
       roomsRef.on('child_added', function (data) {
         let room = data.val()
 
@@ -88,7 +86,7 @@ module.exports = function ($scope) {
         }
       });
 
-      //Listener for currentroom's messages
+      //Add Listener for currentroom's messages when user has been authenticated
       messagesdbRef.on('child_added', function (data) {
         let message = data.val()
 
