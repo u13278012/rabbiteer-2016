@@ -9,8 +9,8 @@ module.exports = function ($scope, $interval) {
 
   $scope.deleteClock = function(clock){
     //filters out the deleted clock
-    $scope.clocks.filter(function(c){
-      return c.format === clock.format && c.timezone.offset === clock.timezone.offset
+    $scope.clocks = $scope.clocks.filter(function(c){
+      return c.format !== clock.format || c.timezone.offset !== clock.timezone.offset
     })
   };
 
@@ -54,7 +54,7 @@ module.exports = function ($scope, $interval) {
   }
 
   var initClock = function () {
-    $interval(tick, 2000);
+    $interval(tick, 1000);
   };
 
   function init() {
