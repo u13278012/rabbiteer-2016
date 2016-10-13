@@ -73,12 +73,13 @@ module.exports = function ($scope) {
     let room = data.val()
 
     //Push room info to rooms array
-    
-    $scope.rooms.push({
-      key: data.key,
-      url: room.url
-    });
-    $scope.$apply();
+    if ($scope.currentroom != room.url) {
+      $scope.rooms.push({
+        key: data.key,
+        url: room.url
+      });
+      $scope.$apply();
+    }
   });
 
   //Listener for currentroom's messages
