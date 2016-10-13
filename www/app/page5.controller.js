@@ -13,7 +13,7 @@ module.exports = function ($scope) {
   }
 
   $scope.nick = "Anon";
-  $scope.currentroom = document.domain;
+  //$scope.currentroom = document.domain;
   $scope.rooms = [];
   $scope.messages = [];
   $scope.newMessage = {};
@@ -21,8 +21,11 @@ module.exports = function ($scope) {
   //For localhost testing
   if (document.domain == 'localhost') {
     $scope.currentroom = 'localhost:8080';
+    $scope.rooms.push({
+      url: 'localhost:8080',
+      key:$scope.currentroom.hashCode()
+    });
   }
-
   //Firebase Config used to connect to your firebase app (cant download this under Firebase Project Settings)
   var config = {
     apiKey: "AIzaSyBnRqWBvsbR-5bnvaRAZZbJc_DQK2JzxHo",
@@ -70,6 +73,7 @@ module.exports = function ($scope) {
     let room = data.val()
 
     //Push room info to rooms array
+    
     $scope.rooms.push({
       key: data.key,
       url: room.url
@@ -89,6 +93,7 @@ module.exports = function ($scope) {
       message: message.message
     });
     $scope.$apply();
+  
   });
 
   //Saves a message to the current rooms message list on Firebase
@@ -119,7 +124,7 @@ module.exports = function ($scope) {
 
   //Change the chatroom to selected room
   $scope.changeChatRoom = function (room) {
-    window.location.href = 'http://' + room + '/#/page5';
+    window.location.href = 'http://' + room.url + '/#/page5';
   }
 
   //Generate a Random Code to idetify the chat message

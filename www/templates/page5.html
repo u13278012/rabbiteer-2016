@@ -8,9 +8,9 @@
           <label for="repeatSelect"><h1 class="basicHeader">Chat Room:</h1></label>
         </td>
         <td>
-          <select name="repeatSelect" id="repeatSelect" ng-model="currentroom" ng-change="changeChatRoom(currentroom)" ng-options="option.url as option.url for option in rooms track by option.url">
+          <select ng-init="currentroom = rooms[0]" name="repeatSelect" id="repeatSelect" ng-model="currentroom" ng-change="changeChatRoom(currentroom)" ng-options="opt.url for opt in rooms">
              <option style="display:none" value="">Select another chat room</option>
-          </select>
+              </select>
         </td>
       </tr>
     </table>
