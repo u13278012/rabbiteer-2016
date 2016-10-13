@@ -57,8 +57,12 @@ module.exports = function ($scope) {
       // If the user is logged in, set the nickname and store the Firebase User for later use 
       if (user.displayName != undefined && user.displayName != null)
         $scope.nick = user.displayName;
-      else
+      // If the user does not have a Displayname in Firebase lets use the email
+      else if (user.email != undefined && user.email != null)
         $scope.nick = user.email;
+      // If the user does not have a email either there is a good chance that the user logged in with Anonymous Authentication
+      else
+        $scope.nick = user.uid;
 
       $scope.user = user;
       $scope.$apply();
@@ -68,36 +72,38 @@ module.exports = function ($scope) {
         url: $scope.currentroom
       });
 
-    }
-  });
 
-  //Listener for rooms
-  roomsRef.on('child_added', function (data) {
-    let room = data.val()
 
-    //Push room info to rooms array
-    if ($scope.currentroom != room.url) {
-      $scope.rooms.push({
-        key: data.key,
-        url: room.url
+      //Listener for rooms
+      roomsRef.on('child_added', function (data) {
+        let room = data.val()
+
+        //Push room info to rooms array
+        if ($scope.currentroom != room.url) {
+          $scope.rooms.push({
+            key: data.key,
+            url: room.url
+          });
+          $scope.$apply();
+        }
       });
-      $scope.$apply();
+
+      //Listener for currentroom's messages
+      messagesdbRef.on('child_added', function (data) {
+        let message = data.val()
+
+        //Push message info to messages array
+        $scope.messages.push({
+          id: data.key,
+          current: message.userid == $scope.user.uid ? true : false,
+          nick: message.nick,
+          message: message.message
+        });
+        $scope.$apply();
+
+      });
+
     }
-  });
-
-  //Listener for currentroom's messages
-  messagesdbRef.on('child_added', function (data) {
-    let message = data.val()
-
-    //Push message info to messages array
-    $scope.messages.push({
-      id: data.key,
-      current: message.userid == $scope.user.uid ? true : false,
-      nick: message.nick,
-      message: message.message
-    });
-    $scope.$apply();
-
   });
 
   //Saves a message to the current rooms message list on Firebase
@@ -120,10 +126,36 @@ module.exports = function ($scope) {
     }
   }
 
-  //Call Auth for GitHub
-  $scope.signInWithGitHub = function () {
+  /**
+   * Firebase allows you to sign in with mutiple Provider`
+   * 
+   * Sign-in providers
+   * Provider	Status	 
+   * Email/Password  
+   * Google  
+   * Facebook  
+   * Twitter  
+   * GitHub  
+   * Anonymous 
+   * 
+   * GitHub limits you to One Domain so for this demo we will use Anonymous Authentication
+    //Call Auth for GitHub
+    $scope.signInWithGitHub = function () {
+      // Sign them in with GitHub
+      firebase.auth().signInWithRedirect(providerGitHub);
+    }
+  **/
+
+  //Call Auth for Anonymous sign in
+  $scope.signInAnonymously = function () {
     // Sign them in with GitHub
-    firebase.auth().signInWithRedirect(providerGitHub);
+    firebase.auth().signInAnonymously();
+  }
+
+  //Sign out from Firebase
+  $scope.signOut = function () {
+    firebase.auth().signOut();
+    $scope.user = undefined;
   }
 
   //Change the chatroom to selected room
@@ -139,12 +171,6 @@ module.exports = function ($scope) {
   //Check if user id Logged in
   $scope.isLoggedIn = function () {
     return $scope.user != undefined;
-  }
-
-  //Sign out from Firebase
-  $scope.signOut = function () {
-    firebase.auth().signOut();
-    $scope.user = undefined;
   }
 
   //Change your Displayname on your Firebase user

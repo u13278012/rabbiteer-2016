@@ -8,7 +8,8 @@
           <label for="repeatSelect"><h1 class="basicHeader">Chat Room:</h1></label>
         </td>
         <td>
-          <select ng-init="currentroom = rooms[0]" name="repeatSelect" id="repeatSelect" ng-model="currentroom" ng-change="changeChatRoom(currentroom)" ng-options="opt.url for opt in rooms">
+          <select ng-init="currentroom = rooms[0]" name="repeatSelect" id="repeatSelect" ng-model="currentroom" ng-change="changeChatRoom(currentroom)"
+            ng-options="opt.url for opt in rooms">
              <option style="display:none" value="">Select another chat room</option>
               </select>
         </td>
@@ -16,9 +17,14 @@
     </table>
   </div>
 </form>
-<div ng-if="!isLoggedIn()">
+<!-- <div ng-if="!isLoggedIn()">
   <a class="btn btn-block btn-social btn-github" ng-click="signInWithGitHub()">
     <span class="fa fa-github"></span> Sign in with GitHub
+  </a>
+</div> -->
+<div ng-if="!isLoggedIn()">
+  <a class="btn btn-block btn-social btn-github" ng-click="signInAnonymously()">
+    <span class="fa fa-sign"></span> Sign in Anonymously
   </a>
 </div>
 <div class="chat-container" ng-if="isLoggedIn()">
